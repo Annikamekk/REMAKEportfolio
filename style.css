@@ -1,0 +1,441 @@
+:root{
+    --wit:rgb(207 ,218, 229);
+    --drop-shadow:rgba(0, 0, 0, 0.24);
+}
+
+@font-face {
+    font-family: 'Kaftan';
+    src: url('fonts/kaftan/kaftan-trial.otf');
+}
+
+@font-face{
+    font-family: 'Montserrat';
+    src: url('fonts/Montserrat/Montserrat-VariableFont_wght.ttf');
+}
+@font-face{
+    font-family: 'Montserrat-italic';
+    src: url('fonts/Montserrat/Montserrat-Italic-VariableFont_wght.ttf');
+}
+
+*{
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Montserrat, sans-serif;
+   background: 
+   radial-gradient(ellipse at top,
+    rgb(22, 25, 26), 
+    rgb(9, 31, 38)
+    ),
+   radial-gradient(ellipse at bottom,
+    rgb(9, 31, 38),
+    transparent
+   );
+   color: var(--wit);
+}
+header{
+    display: flex;
+}
+header ul{
+    position: relative;
+    list-style-type: none;
+    display: flex;
+    margin: 2em;
+}
+
+header ul li{
+    text-transform: uppercase;
+    padding: 1em;
+    font-size: 1em;
+    font-weight: 600;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: var(--wit); 
+    transition: color 0.3s ease;
+}
+
+main> div:nth-of-type(1){
+    position: relative;
+    height: 90vh;
+}
+
+.content {
+    position: absolute;
+    padding: 0 4em 0 3em;
+    float: right;
+    right: 1em;
+}
+
+h1, h2, p, a {
+    opacity: 1; 
+    margin: 0.5em 0;
+}
+
+.content h1{
+    /* text-transform: uppercase; */
+    font-weight: 500;
+    font-size: 6vw;
+    text-align: right;
+}
+.content h1::first-letter{
+    font-family: 'Kaftan';
+    font-size: 8vw;
+
+}
+.content h2{
+    font-size: 5vw;
+    text-transform: uppercase;
+    font-weight: 100;
+    margin-top: -1em;
+}
+
+.content p{
+    text-transform: uppercase;
+    font-weight: 100;
+    font-size: 1.55vw;
+    border-top: .05em solid;
+    width: 53%;
+    margin-top:-1.8em;
+}
+
+.design{
+
+     position: absolute;
+    z-index: 1;
+   
+}
+
+.design img{
+    position: absolute;
+    width:24vw;
+    border-radius: 10% 28% 28%;
+    filter: drop-shadow(var(--drop-shadow) 1em 1em 1em);
+    z-index: 2;
+    left: 6em;
+    top: 10em;
+    animation-name: slide;
+    animation-duration: 1s;
+    animation-iteration-count: 1;
+}
+
+
+@keyframes slide {
+    from{
+        transform: translateX(-10em);
+    }
+    to{
+        transform: translateX(0);
+    }
+}
+
+.design p{
+    position: absolute;
+    text-transform: uppercase;
+    opacity: 6%;
+    font-weight: Bold;
+    font-size: 15vw;
+    z-index: 1;
+    top:1.2em;
+    left: .25em;
+}
+
+@keyframes move {
+	to {
+		/* Move horizontally so that right edge is aligned against the viewport */
+		transform: translateX(calc(-100% + 100vw));
+	}
+}
+
+
+main>div:nth-of-type(2) section{
+	height: 250vh;
+	overflow: visible; /* To make position sticky work … */
+
+	view-timeline-name: --section-pin-tl;
+	view-timeline-axis: block;
+    > div {
+        /* Stick to Top */
+        height: 110vh;
+        width: 100vw;
+        position: sticky;
+        top: 0;
+        padding: 0;
+        margin: 0;
+    
+        width: 100vw;
+        overflow-x: hidden;
+
+        & ul {
+            display: flex;
+            list-style: none;
+            align-items: center;
+            gap: 10em;
+	        height:90vh;
+	        width: 220vmax;
+
+	        /* Hook animation */
+	        will-change: transform;
+	        animation: linear move forwards;
+
+	        /* Link animation to view-timeline */
+	        animation-timeline: --section-pin-tl;
+	        animation-range: contain 0% contain 100%;
+
+            & li {
+                text-align: left;
+                width: 35em;
+                background: 
+                radial-gradient(ellipse at top,
+                rgb(8, 30, 43), 
+                rgb(85, 106, 114)
+                 ),
+                radial-gradient(ellipse at bottom,
+                rgb(8, 30, 43),
+                 transparent
+                );
+                border-radius: 1em ;
+
+
+                & img{
+                    width: 100%;
+                    height: 100%;
+                    border-radius: 1em 1em 0 0;
+                    object-fit: cover;
+                }
+                > div{
+                    padding: 2em;
+                }
+                & h3{
+                    color: var(--wit);
+
+                    font-size: 2em;
+                    margin: 0;
+                }
+                & p{
+                    opacity: .65;
+                    font-weight: 400;
+                    display: -webkit-box;
+                    -webkit-line-clamp: 3; /* number of lines before cutting off */
+                    -webkit-box-orient: vertical;
+                    text-overflow: ellipsis; 
+                    /* white-space: nowrap; */
+                    overflow: hidden;
+                }
+                & a{
+                    text-transform: uppercase;
+                    color: var(--wit);
+                    font-weight: 500;
+
+                }
+
+            }
+        }
+    }
+
+}
+
+/* #about h2{
+    border-radius: .4em .4em .4em .5em;
+    font-size: 5.5vw;
+    text-transform: uppercase;
+    color: var(--wit);
+    background-color: var(--wit);
+    filter: drop-shadow(var(--drop-shadow) 0 0 .1em);
+    padding:1em;
+    width: 35%;
+    text-align: right;
+    margin-right: 1em;
+    line-height: 0.8em;
+    z-index: 1;
+} */
+
+
+
+.scroll_container {
+    display: flex;
+    height:100vh;
+}
+
+.content_introduction {
+    position: sticky;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    /* align-items: start; */
+    align-self: start;
+    justify-content: center;
+    width: 80%;
+    backdrop-filter: blur(10px);
+    padding: 2em;
+    margin : 0 auto;
+}
+.content_introduction h3,
+.content_introduction div {
+    position: static;
+}
+.content_introduction h3{
+    text-transform: uppercase;
+    font-size: 4em;
+    align-self: start;
+    padding: 0;
+    margin: 0;
+}
+.content_introduction h3::first-letter{
+    font-family: 'Kaftan';
+    text-transform: lowercase;
+    font-size: 1.4em;
+}
+
+.content_introduction div{
+    align-self: center;
+    top: 5em;
+    line-height: 1.5em;
+    margin-right: 5em;
+    width: 50%;
+    color: var(--drop-shadow);
+}
+
+.content_introduction p:nth-of-type(2){
+    margin-bottom: 2em;
+}
+.content_introduction a{ 
+    margin-top: .5em;
+}
+
+.content_introduction > img{
+    width: 30%;
+    border-radius: .3em;
+    align-self: center;
+}
+
+fieldset{
+    display: flex;
+    flex-direction: row;
+    width: 90%;
+    padding:0 2em;
+    border: none;
+    justify-self: center;
+}
+fieldset legend{
+    font-size: 4em;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 1em;
+}
+fieldset legend::first-letter{
+    font-family: 'Kaftan';
+}
+
+fieldset label{
+    font-weight: 100;
+    font-size: 2em;
+    
+}
+
+/* fieldset label{
+    font-size: 1.5em;
+    color: var(--wit);
+} */
+
+fieldset section{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    margin-bottom: 2em;
+
+}
+fieldset input{
+    border: none;
+    margin: 1em 0;
+    border-radius:.2em ;
+    font-family: Montserrat;
+    background-color: transparent;
+    color: var(--wit);
+   
+}
+fieldset section> input{
+    height: 4em;
+    width: 80%;
+    border-bottom: .5em solid var(--wit) ;
+    
+}
+
+fieldset  div{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+/* fieldset > div label{
+   width: 100%;
+} */
+fieldset div > textarea {
+    height: 100%;
+    width: 100%;
+    border: .5em solid var(--wit);
+    border-radius:.2em ;
+    text-align: start;
+    font-family: Montserrat;
+    resize: vertical;
+    padding: 0.5em;   
+    margin: 1em 0;
+    color: var(--wit);
+    background-color: transparent;
+}
+fieldset div button{
+    background: 
+    linear-gradient(
+        130deg,
+        rgb(138, 178, 200),
+        rgb(8, 32, 42)
+    );
+
+    border: none;
+    border-radius: .3em;
+    font-family: 'Montserrat';
+    font-size: 1.3em;
+    text-transform: uppercase;
+    width: 20%;
+    padding: .5em 1em;
+    margin: 1em 0;
+   align-self: end;
+    box-shadow: inset 0 0 .3em #45425a;
+}
+
+fieldset input:user-invalid,
+fieldset textarea:user-invalid{
+    outline: .3em solid rgb(238, 138, 138);
+}
+form:has(input:invalid) button,
+form:has(textarea:invalid) button {
+    background:  rgb(45, 59, 64);
+    box-shadow: none;
+}
+
+
+input:has([required]) input::after{
+    content: '*';
+    position: absolute;
+}
+footer{
+    height: auto;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2em 0 .5em 2em;
+
+}
+
+footer a{
+    color: var(--wit);
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 1.2em;
+
+}
+
+
+
+
+
