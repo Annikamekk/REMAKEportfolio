@@ -75,7 +75,7 @@ h1, h2, p, a {
 }
 
 .content h1{
-    /* text-transform: uppercase; */
+    text-transform: uppercase;
     font-weight: 500;
     font-size: 6vw;
     text-align: right;
@@ -83,13 +83,15 @@ h1, h2, p, a {
 .content h1::first-letter{
     font-family: 'Kaftan';
     font-size: 8vw;
+    text-transform: lowercase;
+
 
 }
 .content h2{
     font-size: 5vw;
     text-transform: uppercase;
     font-weight: 100;
-    margin-top: -1em;
+    margin-top: -1.2em;
 }
 
 .content p{
@@ -255,9 +257,30 @@ main>div:nth-of-type(2) section{
 
 
 .scroll_container {
+    position: relative;
     display: flex;
-    height:100vh;
+    height:235vh;
+    width: 80%;
+    margin: 0 auto;
 }
+
+
+.scroll_container div:nth-child(1){
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    gap: 1em;
+    
+}
+.scroll_container div img{
+
+    width: 25vw;
+    border-radius: .5em;
+    outline: .2em ;
+
+}
+
 
 .content_introduction {
     position: sticky;
@@ -267,13 +290,13 @@ main>div:nth-of-type(2) section{
     /* align-items: start; */
     align-self: start;
     justify-content: center;
-    width: 80%;
+    width: 100%;
     backdrop-filter: blur(10px);
-    padding: 2em;
-    margin : 0 auto;
+    padding:0 2em;
+    /* margin : 0 auto; */
 }
 .content_introduction h3,
-.content_introduction div {
+.content_introduction div:nth-child(2) {
     position: static;
 }
 .content_introduction h3{
@@ -282,6 +305,7 @@ main>div:nth-of-type(2) section{
     align-self: start;
     padding: 0;
     margin: 0;
+    font-weight: 500;
 }
 .content_introduction h3::first-letter{
     font-family: 'Kaftan';
@@ -289,7 +313,7 @@ main>div:nth-of-type(2) section{
     font-size: 1.4em;
 }
 
-.content_introduction div{
+.content_introduction div:nth-child(2){
     align-self: center;
     top: 5em;
     line-height: 1.5em;
@@ -298,11 +322,22 @@ main>div:nth-of-type(2) section{
     color: var(--drop-shadow);
 }
 
-.content_introduction p:nth-of-type(2){
-    margin-bottom: 2em;
+.content_introduction p{
+    font-size:1.2em ;
+    font-weight: 200;
 }
-.content_introduction a{ 
-    margin-top: .5em;
+
+.content_introduction a {
+    font-weight: 500;
+    color: var(--wit);
+    text-decoration: none;
+    transition: font-weight 0.3s ease-in-out;
+}
+
+.content_introduction a:hover { 
+    font-weight: 700;
+   
+    text-decoration: underline;
 }
 
 .content_introduction > img{
@@ -322,7 +357,7 @@ fieldset{
 fieldset legend{
     font-size: 4em;
     text-transform: uppercase;
-    font-weight: 700;
+    font-weight: 500;
     margin-bottom: 1em;
 }
 fieldset legend::first-letter{
@@ -385,13 +420,7 @@ fieldset div > textarea {
     background-color: transparent;
 }
 fieldset div button{
-    background: 
-    linear-gradient(
-        130deg,
-        rgb(138, 178, 200),
-        rgb(8, 32, 42)
-    );
-
+    background-color:rgb(138, 178, 200) ;
     border: none;
     border-radius: .3em;
     font-family: 'Montserrat';
