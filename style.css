@@ -191,8 +191,9 @@ main>div:nth-of-type(2) section{
                 width: 35em;
                 background: 
                 radial-gradient(ellipse at top,
-                rgb(8, 30, 43), 
-                rgb(85, 106, 114)
+             
+                rgb(85, 106, 114),
+                rgb(8, 30, 43)
                  ),
                 radial-gradient(ellipse at bottom,
                 rgb(8, 30, 43),
@@ -256,33 +257,40 @@ main>div:nth-of-type(2) section{
 
 
 
-.scroll_container {
+.scrollContainer {
     position: relative;
     display: flex;
-    height:235vh;
-    width: 80%;
-    margin: 0 auto;
+    height:250vh;
+    width: 90%;
+    margin: 0 auto 5.5em auto;
+    gap: 3em;
+   
 }
 
 
-.scroll_container div:nth-child(1){
+.scrollContainer> div:nth-child(1){
     position: relative;
     display: flex;
     flex-direction: column;
     width: 40%;
-    gap: 1em;
-    
-}
-.scroll_container div img{
-
-    width: 25vw;
+    height: max-content;
     border-radius: .5em;
-    outline: .2em ;
 
+}
+.scrollContainer > div img{
+    outline: .5em solid  rgb(9, 31, 38);
+    width: 100%;
+}
+.scrollContainer > div img:first-of-type{
+    border-radius: .5em .5em 0 0; 
+}
+
+.scrollContainer > div img:last-of-type{
+    border-radius:0 0 .5em .5em; 
 }
 
 
-.content_introduction {
+.contentIntroduction {
     position: sticky;
     top: 0;
     display: flex;
@@ -291,15 +299,14 @@ main>div:nth-of-type(2) section{
     align-self: start;
     justify-content: center;
     width: 100%;
-    backdrop-filter: blur(10px);
-    padding:0 2em;
+    padding: 1.5em;
     /* margin : 0 auto; */
 }
-.content_introduction h3,
-.content_introduction div:nth-child(2) {
+.contentIntroduction h3,
+.contentIntroduction div:nth-child(2) {
     position: static;
 }
-.content_introduction h3{
+.contentIntroduction h3{
     text-transform: uppercase;
     font-size: 4em;
     align-self: start;
@@ -307,45 +314,100 @@ main>div:nth-of-type(2) section{
     margin: 0;
     font-weight: 500;
 }
-.content_introduction h3::first-letter{
+.contentIntroduction h3::first-letter{
     font-family: 'Kaftan';
     text-transform: lowercase;
     font-size: 1.4em;
 }
 
-.content_introduction div:nth-child(2){
-    align-self: center;
-    top: 5em;
-    line-height: 1.5em;
-    margin-right: 5em;
-    width: 50%;
-    color: var(--drop-shadow);
-}
-
-.content_introduction p{
+.contentIntroduction p{
     font-size:1.2em ;
     font-weight: 200;
+    opacity:.9;
 }
 
-.content_introduction a {
+.contentIntroduction a {
     font-weight: 500;
     color: var(--wit);
     text-decoration: none;
     transition: font-weight 0.3s ease-in-out;
 }
 
-.content_introduction a:hover { 
+.contentIntroduction a:hover { 
     font-weight: 700;
-   
     text-decoration: underline;
+    opacity: 1;
+}
+.contentIntroduction a:visited{
+    color: var(--wit);
+}
+.contentIntroduction a:focus-visible{
+   outline: .2em solid rgb(199, 225, 238);
 }
 
-.content_introduction > img{
+.contentIntroduction > img{
     width: 30%;
     border-radius: .3em;
     align-self: center;
 }
+.contentIntroduction h4{
+    margin: 0;
+    padding: 0;
+    font-size: 1.5em;
+    font-weight: 500;
+}
+.contentIntroduction ul{
+    list-style: none;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    background: 
+    radial-gradient(ellipse at top left,
+    rgb(44, 81, 102), 
+    rgb(85, 106, 114)
+     ),
+    radial-gradient(ellipse at bottom,
+    rgb(8, 30, 43),
+     transparent
+    );
+    padding:2em 1em  ;
+    border-radius:.5em ;
+    column-gap: 2em;
+    row-gap: 1em;
+    margin: 1em 0; /* To remove default bottom margin */
+}
+.contentIntroduction ul li label{
+    font-weight: bold;
+    margin-bottom: 1em;
+}
 
+/* Progress bar container styling */
+.progressBarContainer {
+    background-color:var(--wit);
+    border-radius: 25px;
+    height: 12px;
+    width: 15em;
+   
+}
+
+/* Styling for the actual progress bar */
+.progressBar {
+    width: 0; /* Start at 0% */
+    height: 100%;
+    border-radius: 25px;
+    background-color:rgb(22, 49, 64);
+    transition: width 2s ease-out; /* Smooth animation */
+}
+
+/* Animation when the progress bar is in view */
+.inView {
+    width: 0 !important; /* Reset the width when out of view */
+}
+
+
+
+
+/* //////////////////////////////// contact///////////////////////// */
 fieldset{
     display: flex;
     flex-direction: row;
